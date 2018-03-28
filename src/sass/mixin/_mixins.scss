@@ -1,0 +1,71 @@
+$border-color: #e6e6e6;
+$base-color:#409EFF;
+$baseTextSize: 14px;
+
+html,
+body,
+#app,
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
+  background-color: #fff;
+}
+
+a {
+  text-decoration: none
+}
+
+p {
+  font-size: $baseTextSize;
+  color: #000;
+
+}
+
+@mixin borderOne($direction) {
+  border-#{$direction}: 1px solid $border-color
+}
+
+//根据父容器全部覆盖 用于子路由样式
+@mixin templateZIndex($type:r,$zIndex:0) {
+  $a: absolute;
+  $r: relative;
+  $f: fixed;
+  @if $type==a {
+    position: #{$a};
+  }
+  @else if  $type==r {
+    position: #{$r};
+  }
+  @else if  $type==f {
+    position: #{$f};
+  }@else{
+    position: #{$r};
+  }
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  @if $zIndex {
+    z-index: $zIndex;
+  }
+
+}
+
+@mixin flex-box($direction:center) {
+  display: flex;
+  align-items: center;
+  @if $direction==left {
+    justify-content: flex-start;
+  } @else if $direction==center {
+    justify-content: center;
+  } @else if $direction==right {
+    justify-content: flex-end;
+  }
+}

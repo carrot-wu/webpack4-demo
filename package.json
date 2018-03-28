@@ -1,0 +1,50 @@
+{
+  "name": "webpackDemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "set NODE_ENV=dev && webpack-dev-server",
+    "build": "set NODE_ENV=build && webpack",
+    "eslint": "set NODE_ENV=eslint && webpack-dev-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "expose-loader": "^0.7.4",
+    "happypack":"^5.0.0-beta.3",
+    "jquery": "^3.2.1",
+    "webpack-bundle-analyzer": "^2.9.2",
+    "webpack-cli": "^2.0.12"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.6",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.2.3",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.13.1",
+    "eslint-loader": "^1.9.0",
+    "extract-text-webpack-plugin":"^4.0.0-beta.0",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
+    "image-webpack-loader": "^3.4.2",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "node-sass": "^4.7.2",
+    "postcss-loader": "^2.0.9",
+    "sass": "^1.0.0-beta.4",
+    "sass-loader": "webpack-contrib/sass-loader",
+    "style-loader": "^0.19.0",
+    "uglifyjs-webpack-plugin": "^1.1.6",
+    "url-loader": "^0.6.2",
+    "webpack": "^4.1.1",
+    "webpack-dev-server": "^3.1.1",
+    "webpack-merge": "^4.1.1"
+  }
+}
