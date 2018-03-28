@@ -1,4 +1,5 @@
 // 引入基础配置
+const path = require('path'); //定义绝对路径
 const webpackBase = require("./webpack.config.base");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');//加载分离css文件和js文件的插件
 const webpackMerge = require('webpack-merge')
@@ -7,6 +8,10 @@ const cleanWebpackPlugin = require('clean-webpack-plugin'); //每次清楚dist�
 const HappyPack = require('happypack') //引入happypack
 const os = require('os'); //获取cpu
 const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length});
+
+//css treeShaking
+const glob = require('glob')
+const PurifyCSSPlugin = require('purifycss-webpack')
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -64,6 +69,11 @@ module.exports = webpackMerge(webpackBase, {
 				/* [name] 根据html名字获取的css名字  contenthash:6加上hash:6值*/
 			},
 			allChunks: true
+		}),
+		//css treeshaking
+		new PurifyCSSPlugin({
+			// 查找html文件
+			paths: glob.sync(path.resolve(__dirname, '../src/page/*.html'))
 		}),
 
 		new BundleAnalyzerPlugin()

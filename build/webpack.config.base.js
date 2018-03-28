@@ -7,9 +7,6 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin') //开启多线程进�
 const HappyPack = require('happypack') //引入happypack
 const os = require('os'); //获取cpu
 const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length});
-//css treeShaking
-const glob = require('glob')
-const PurifyCSSPlugin = require('purifycss-webpack')
 
 const webpack = require('webpack') //获取内置的webpack
 
@@ -238,11 +235,6 @@ module.exports = {
 			parallel: true,
 		}), //开启多线程进行打包
 
-		//css treeshaking
-		new PurifyCSSPlugin({
-			// 查找html文件
-			paths: glob.sync(path.join(__dirname, '../src/page/*.html'))
-		}),
 
 		//复制文件
 		new copyWebpackPlugin([
