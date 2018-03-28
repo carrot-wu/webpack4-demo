@@ -7,10 +7,13 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin') //开启多线程进�
 const HappyPack = require('happypack') //引入happypack
 const os = require('os'); //获取cpu
 const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length});
+//css treeShaking
+const glob = require('glob')
+const PurifyCSSPlugin = require('purifycss-webpack')
 
 const webpack = require('webpack') //获取内置的webpack
 
-const baseConfig = require('./config') //默认配置
+const baseConfig = require('./config') //默认第三方类库设置配置
 
 /*一些多页面应用的配置*/
 
@@ -146,13 +149,13 @@ module.exports = {
 		/*以一个html模板进行创建html文件*/
 		...HTMLPlugins,
 
-				new HappyPack({
-					id: 'js',
-					loaders: ['babel-loader?cacheDirectory=true'],
-					threadPool: happyThreadPool,
-					// cache: true,
-					verbose: true
-				}),
+		new HappyPack({
+			id: 'js',
+			loaders: ['babel-loader?cacheDirectory=true'],
+			threadPool: happyThreadPool,
+			// cache: true,
+			verbose: true
+		}),
 
 		/*
 				//提取公用业务的代码 比如多次引用一个base文件
@@ -186,13 +189,15 @@ module.exports = {
 					priority: -20,
 					reuseExistingChunk: true,
 				},
+				//打包重复出现的代码
 				vendor: {
-					chunks: 'all',
+					chunks: 'initial',
 					minChunks: 2,
 					maxInitialRequests: 5, // The default limit is too small to showcase the effect
 					minSize: 0, // This is example is too small to create commons chunks
 					name: 'vendor'
 				},
+				//打包第三方类库
 				commons: {
 					name: "commons",
 					chunks: "initial",
@@ -201,6 +206,9 @@ module.exports = {
 			}
 		}),
 
+		new webpack.optimize.RuntimeChunkPlugin({
+			name: "manifest"
+		}),
 
 		/*
 
@@ -229,6 +237,13 @@ module.exports = {
 		new UglifyJSPlugin({
 			parallel: true,
 		}), //开启多线程进行打包
+
+		//css treeshaking
+		new PurifyCSSPlugin({
+			// 查找html文件
+			paths: glob.sync(path.join(__dirname, '../src/page/*.html'))
+		}),
+
 		//复制文件
 		new copyWebpackPlugin([
 			{
@@ -237,7 +252,7 @@ module.exports = {
 				force: true
 			}
 		]),
-		new webpack.BannerPlugin('吴hr版权所有，翻版必究'),
+		new webpack.BannerPlugin('少年！看你天赋异禀，我这里有五毛钱的武林秘籍——秃头宝典'),
 
 
 	],

@@ -13,7 +13,7 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "expose-loader": "^0.7.4",
-    "happypack":"^5.0.0-beta.3",
+    "happypack": "^5.0.0-beta.3",
     "jquery": "^3.2.1",
     "webpack-bundle-analyzer": "^2.9.2",
     "webpack-cli": "^2.0.12"
@@ -29,7 +29,7 @@
     "css-loader": "^0.28.7",
     "eslint": "^4.13.1",
     "eslint-loader": "^1.9.0",
-    "extract-text-webpack-plugin":"^4.0.0-beta.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.5",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
@@ -38,6 +38,8 @@
     "less-loader": "^4.0.5",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.0.9",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
     "sass": "^1.0.0-beta.4",
     "sass-loader": "webpack-contrib/sass-loader",
     "style-loader": "^0.19.0",

@@ -1,0 +1,2 @@
+/*! 少年！看你天赋异禀，我这里有五毛钱的武林秘籍——秃头宝典 */
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{"wp6+":function(o,n,p){"use strict";p("rCIJ");var s=p("SQ0v");console.log("pagea"),console.log(2131231),(0,s.myconsole)()}},[["wp6+",0,1]]]);
