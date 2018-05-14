@@ -12,11 +12,13 @@
   "license": "ISC",
   "dependencies": {
     "babel-runtime": "^6.26.0",
+    "bootstrap": "^4.1.1",
     "expose-loader": "^0.7.4",
     "happypack": "^5.0.0-beta.3",
     "jquery": "^3.2.1",
-    "webpack-bundle-analyzer": "^2.9.2",
-    "webpack-cli": "^2.0.12"
+    "normalize.css": "^8.0.0",
+    "popper.js": "^1.14.3",
+    "webpack-bundle-analyzer": "^2.9.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
@@ -46,6 +48,7 @@
     "uglifyjs-webpack-plugin": "^1.1.6",
     "url-loader": "^0.6.2",
     "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
     "webpack-dev-server": "^3.1.1",
     "webpack-merge": "^4.1.1"
   }

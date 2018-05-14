@@ -87,6 +87,13 @@ module.exports = {
 				}]
 			},
 			{
+				test: require.resolve('popper.js'),
+				use: [{
+					loader: 'expose-loader',
+					options: 'Popper'
+				}]
+			},
+			{
 				test: /\.js$/, //匹配所有css文件
 				use: [
 					//{loader: 'babel-loader'}, //编译es6

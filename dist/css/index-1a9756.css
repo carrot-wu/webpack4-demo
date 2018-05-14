@@ -5,10 +5,5 @@
 
 p {
   background-color: #000;
-}
-
-div {
-  width: 100px;
-  height: 100px;
-  background: url(../image/avatar-c2c184.jpg);
+  text-align: center;
 }

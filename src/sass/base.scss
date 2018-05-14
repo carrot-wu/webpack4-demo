@@ -1,5 +1,7 @@
-
+@import "../../node_modules/normalize.css/normalize.css";
 @import "mixin/_mixins";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
 
 html,
 body,
@@ -10,24 +12,5 @@ body,
   overflow: hidden;
   margin: 0;
   padding: 0;
-}
-
-div{
-  box-sizing: border-box;
-}
-body {
-  font-family: "Helvetica Neue", Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
-  background-color: #fff;
-
-}
-
-a {
-  text-decoration: none
-}
-
-p {
-  font-size: $baseTextSize;
-  color: #000;
-
 }
 
