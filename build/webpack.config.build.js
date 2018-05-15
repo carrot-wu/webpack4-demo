@@ -9,9 +9,11 @@ const HappyPack = require('happypack') //引入happypack
 const os = require('os'); //获取cpu
 const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length});
 
+/*
 //css treeShaking
 const glob = require('glob')
 const PurifyCSSPlugin = require('purifycss-webpack')
+*/
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -70,11 +72,13 @@ module.exports = webpackMerge(webpackBase, {
 			},
 			allChunks: true
 		}),
+/*
 		//css treeshaking
 		new PurifyCSSPlugin({
 			// 查找html文件
-			paths: glob.sync(path.resolve(__dirname, '../src/page/*.html'))
+			paths: glob.sync(path.resolve(__dirname, '../src/page/!*.html'))
 		}),
+*/
 
 		new BundleAnalyzerPlugin()
 	],
