@@ -246,8 +246,8 @@ module.exports = {
 		//复制文件
 		new copyWebpackPlugin([
 			{
-				from: path.resolve(__dirname, '../src/lib/libCss/mui.min.css'),
-				to: path.resolve(__dirname, '../dist/lib/libCss'),
+				from: path.resolve(__dirname, '../src/assets'),
+				to: path.resolve(__dirname, '../dist/assets'),
 				force: true
 			}
 		]),
