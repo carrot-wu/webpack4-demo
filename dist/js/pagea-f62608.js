@@ -1,0 +1,2 @@
+/*! 少年！看你天赋异禀，我这里有五毛钱的武林秘籍——秃头宝典 */
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{"/ksh":function(o,n,e){},xOXW:function(o,n,e){"use strict";e("rCIJ"),e("/ksh");var s=function(o){if(o&&o.__esModule)return o;var n={};if(null!=o)for(var e in o)Object.prototype.hasOwnProperty.call(o,e)&&(n[e]=o[e]);return n.default=o,n}(e("sxEU")),t=e("SQ0v");s._console(),console.log("pagea"),console.log("test111111"),(0,t.myconsole)()}},[["xOXW",0,1]]]);

@@ -1,7 +1,7 @@
 // 引入基础配置
 const path = require('path'); //定义绝对路径
 const webpackBase = require("./webpack.config.base");
-const ExtractTextPlugin = require('extract-text-webpack-plugin');//加载分离css文件和js文件的插件
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');//加载分离css文件和js文件的插件
 const webpackMerge = require('webpack-merge')
 const cleanWebpackPlugin = require('clean-webpack-plugin'); //每次清楚dist文件的插件
 
@@ -19,12 +19,17 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 
 //生产环境css配置
-const cssProd = ExtractTextPlugin.extract({
-	fallback: 'style-loader',
-
-	use: 'happypack/loader?id=css',
-	publicPath: '../'    //TODO 因为这里下面的css文件输出地址在css中  路径图片的../变成了 /被吃掉了 搜一下雨要在这充值设置一下
-})
+const cssProd = [
+	{
+		loader: MiniCssExtractPlugin.loader,
+		options: {
+			publicPath: '../'    //TODO 因为这里下面的css文件输出地址在css中  路径图片的../变成了 /被吃掉了 搜一下雨要在这充值设置一下
+		}
+	},
+	{
+		//fallback: 'style-loader', 生产环境不支持style-loader
+		loader: 'happypack/loader?id=css',
+	}]
 
 
 module.exports = webpackMerge(webpackBase, {
@@ -56,29 +61,27 @@ module.exports = webpackMerge(webpackBase, {
 			verbose: true,
 			threadPool: happyThreadPool,
 			loaders: [
+
 				{loader: 'css-loader', options: {importLoaders: 1, minimize: true}},
 				{loader: 'postcss-loader'},
-				{loader:'sass-loader'}
+				{loader: 'sass-loader'}
 			]
 
 		}),
 
 
 		/*加载把css文件单独分离出来的插件*/
-		new ExtractTextPlugin({
-			filename: (getPath) => {
-				return getPath('css/[name]-[contenthash:6].css').replace('css/js', 'css');
-				/* [name] 根据html名字获取的css名字  contenthash:6加上hash:6值*/
-			},
-			allChunks: true
+		new MiniCssExtractPlugin({
+			filename: 'css/[name].[hash].css',
+			chunkFilename: 'css/[name].[hash:6].css'
 		}),
-/*
-		//css treeshaking
-		new PurifyCSSPlugin({
-			// 查找html文件
-			paths: glob.sync(path.resolve(__dirname, '../src/page/!*.html'))
-		}),
-*/
+		/*
+				//css treeshaking
+				new PurifyCSSPlugin({
+					// 查找html文件
+					paths: glob.sync(path.resolve(__dirname, '../src/page/!*.html'))
+				}),
+		*/
 
 		new BundleAnalyzerPlugin()
 	],
